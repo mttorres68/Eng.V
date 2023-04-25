@@ -1,0 +1,7 @@
+venv
+app/app/__pycache__
+app/home/__pycache__
+app/home/templates
+
+serializers.py
+models.py
