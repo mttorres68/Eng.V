@@ -1,20 +1,19 @@
-from django.test import TestCase
+import time
+from django.test import LiveServerTestCase
+from selenium import webdriver
 
-class TestConversor(TestCase):
+class NewTest(LiveServerTestCase):
 
-    def conversor_celsius_para_fahrenheit(self, celsius):
-        fahrenheit = (celsius * 9/5) + 32
-        return fahrenheit
+    def setUp(self):
+        self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
+
+    def tearDown(self):
+        self.browser.quit()
     
-    def test_conversao_celsius_fahrenheit(self):
-        # teste para 0 graus Celsius
-        resultado = self.conversor_celsius_para_fahrenheit(0)
-        self.assertEqual(resultado, 34)
+    def test_name(self):
+        self.browser.get(self.live_server_url)
 
-        # teste para 25 graus Celsius
-        resultado = self.conversor_celsius_para_fahrenheit(25)
-        self.assertEqual(resultado, 77)
+        time.sleep(5)
 
-        # teste para -10 graus Celsius
-        resultado = self.conversor_celsius_para_fahrenheit(-10)
-        self.assertEqual(resultado, 14)
+        self.assertIn("Alunos", self.browser.title)
