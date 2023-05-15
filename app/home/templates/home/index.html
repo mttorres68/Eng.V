@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'app/home/templates/styles/style.css' %}">
+    <title>Alunos</title>
+</head>
+<body>
+    <h1>Alunos</h1>
+    <p>Alunos Matriculados</p>
+
+    <table border="1">
+        <tr>
+            <th>
+                Nome
+            </th>
+            <th>
+                Matricula
+            </th>
+            {% for x in alunos %}
+                <tr>
+                    <td>
+                        {{ x.nome }}
+                    </td>
+                    <td>{{ x.matricula }}</td>
+                </tr>               
+            {% endfor %}
+        </tr>
+    </table>
+
+    <div>
+        <h1>Adicionar Alunos</h1>
+    </div>
+
+</body>
+</html>
